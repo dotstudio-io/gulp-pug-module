@@ -4,7 +4,8 @@
   "description": "Gulp plugin to compile Pug files to NodeJS modules.",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha"
+    "test": "node_modules/.bin/mocha",
+    "test:perf": "node test/perf"
   },
   "repository": {
     "type": "git",
