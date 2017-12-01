@@ -101,7 +101,7 @@ gulp.task('templates', ['clean'], () => {
 gulp.task('default', ['templates']);
 ```
 
-Your templates will now be NodeJS modules that you can require.
+Your templates will now be Node.js modules that you can require.
 
 
 ## Usage in your app
