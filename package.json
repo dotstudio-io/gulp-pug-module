@@ -1,7 +1,7 @@
 {
   "name": "gulp-pug-module",
   "version": "1.0.0",
-  "description": "Gulp plugin to compile Pug files to NodeJS modules.",
+  "description": "Gulp plugin to compile Pug files to Node.js modules.",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha",
