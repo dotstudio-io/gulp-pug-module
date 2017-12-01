@@ -1,6 +1,6 @@
 {
   "name": "gulp-pug-module",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Gulp plugin to compile Pug files to NodeJS modules.",
   "main": "index.js",
   "scripts": {
