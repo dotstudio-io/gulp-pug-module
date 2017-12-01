@@ -1,26 +1,27 @@
 const validator = require('html-validator');
 const expect = require('chai').expect;
-const pugModule = require('../');
 const gulp = require('gulp');
+
+const gulpPugModule = require('../');
 
 describe('Gulp Pug Module', () => {
   it('should be a function', () => {
-    expect(pugModule).to.be.a('function');
+    expect(gulpPugModule).to.be.a('function');
   });
 
   it('should compile a simple layout to module', (done) => {
     gulp.task('default', () => {
-      gulp.src('test/templates/source/**/*.pug')
-        .pipe(pugModule())
+      return gulp.src('test/templates/source/simple.pug')
+        .pipe(gulpPugModule())
         .pipe(gulp.dest('test/templates/dest'));
     });
 
     gulp.task('test', ['default'], () => {
-      const layout = require('./templates/dest/layout');
+      const tpl = require('./templates/dest/simple');
 
-      expect(layout).to.be.a('function');
+      expect(tpl).to.be.a('function');
 
-      const html = layout();
+      const html = tpl();
 
       expect(html).to.be.a('string');
 
