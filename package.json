@@ -1,0 +1,42 @@
+{
+  "name": "gulp-pug-module",
+  "version": "1.0.0",
+  "description": "Gulp plugin to compile Pug files to NodeJS modules.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FinalDevStudio/gulp-pug-module.git"
+  },
+  "keywords": [
+    "gulp",
+    "plugin",
+    "pug",
+    "module"
+  ],
+  "author": "Final Development Studio <sorcery@finaldevstudio.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FinalDevStudio/gulp-pug-module/issues"
+  },
+  "homepage": "https://github.com/FinalDevStudio/gulp-pug-module#readme",
+  "dependencies": {
+    "gulp-util": "^3.0.8",
+    "pug": "^2.0.0-rc.4",
+    "replace-ext": "^1.0.0",
+    "through2": "^2.0.3"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "gulp": "^3.9.1",
+    "html-validator": "^2.2.3",
+    "mocha": "^4.0.1",
+    "pug-runtime": "^2.0.3"
+  }
+}
