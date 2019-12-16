@@ -25,7 +25,7 @@
   "homepage": "https://github.com/FinalDevStudio/gulp-pug-module#readme",
   "dependencies": {
     "gulp-util": "^3.0.8",
-    "pug": "^2.0.3",
+    "pug": "^2.0.4",
     "replace-ext": "^1.0.0",
     "through2": "^3.0.1"
   },
@@ -35,9 +35,9 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "gulp": "^3.9.1",
-    "html-validator": "^4.0.3",
-    "mocha": "^6.1.4",
-    "pug-runtime": "^2.0.4"
+    "gulp": "^4.0.2",
+    "html-validator": "^5.0.0",
+    "mocha": "^6.2.2",
+    "pug-runtime": "^2.0.5"
   }
 }

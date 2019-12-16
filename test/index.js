@@ -1,59 +1,41 @@
 const validator = require('html-validator');
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const gulp = require('gulp');
 
 const gulpPugModule = require('../');
 
-describe('Gulp Pug Module', () => {
-  it('should be a function', () => {
+describe('Gulp Pug Module', function () {
+  it('should be a function', function () {
     expect(gulpPugModule).to.be.a('function');
   });
 
-  it('should compile a simple layout to module', (done) => {
-    gulp.task('default', () => {
+  it('should compile a simple layout to module', async function () {
+    let template, html, messages;
+
+    function compile () {
       return gulp.src('test/templates/source/simple.pug')
         .pipe(gulpPugModule())
         .pipe(gulp.dest('test/templates/dest'));
-    });
+    }
 
-    gulp.task('test', ['default'], () => {
-      const tpl = require('./templates/dest/simple');
-
-      expect(tpl).to.be.a('function');
-
-      const html = tpl();
-
-      expect(html).to.be.a('string');
+    async function test () {
+      template = require('./templates/dest/simple');
+      html = template();
 
       const options = {
         data: html,
       };
 
-      validator(options)
-        .then((data) => {
-          const messages = JSON.parse(data).messages;
+      const validation = await validator(options);
 
-          if (messages.length) {
-            messages.forEach((msg, i) => {
-              const err = new Error(msg.message);
+      messages = JSON.parse(validation).messages;
+    }
 
-              err.stack += `\nValidation Error (${i + 1}/${messages.length}):\n`;
+    await compile();
+    await test();
 
-              Object.keys(msg).forEach((key) => {
-                err.stack += `    ${key}: ${msg[key]}\n`;
-              });
-
-              console.error(err);
-            });
-          }
-
-          expect(messages).to.be.empty;
-
-          done();
-        })
-        .catch(err => done(err));
-    });
-
-    gulp.start('test');
+    expect(template).to.be.a('function');
+    expect(html).to.be.a('string');
+    expect(messages).to.be.empty;
   });
 });
