@@ -10,32 +10,46 @@ describe('Gulp Pug Module', function () {
   });
 
   it('should compile a simple layout to module', async function () {
-    let template, html, messages;
+    const names = ['simple', 'locals', 'index'];
+    const templates = [];
+    const messages = [];
+    const htmls = [];
 
     function compile () {
-      return gulp.src('test/templates/source/simple.pug')
+      return gulp.src(names.map(name => `test/templates/source/${name}.pug`))
         .pipe(gulpPugModule())
         .pipe(gulp.dest('test/templates/dest'));
     }
 
     async function test () {
-      template = require('./templates/dest/simple');
-      html = template();
+      for (const name of names) {
+        const template = require(`./templates/dest/${name}`);
+        const html = template();
 
-      const options = {
-        data: html,
-      };
+        templates.push(template);
+        htmls.push(html);
 
-      const validation = await validator(options);
+        const options = {
+          data: html
+        };
 
-      messages = JSON.parse(validation).messages;
+        const validation = await validator(options);
+
+        messages.push(...JSON.parse(validation).messages);
+      }
     }
 
     await compile();
     await test();
 
-    expect(template).to.be.a('function');
-    expect(html).to.be.a('string');
+    for (const template of templates) {
+      expect(template).to.be.a('function');
+    }
+
+    for (const html of htmls) {
+      expect(html).to.be.a('string');
+    }
+
     expect(messages).to.be.empty;
   });
 });
