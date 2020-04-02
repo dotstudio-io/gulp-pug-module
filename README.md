@@ -1,3 +1,7 @@
+---
+### No longer maintained. Please see [@fiquu/gulp-pug-module](https://github.com/fiquu/gulp-pug-module).
+---
+
 # gulp-pug-module
 
 [Gulp](https://github.com/gulpjs/gulp) plugin to compile [Pug](https://pugjs.org) files to [Node.js](https://nodejs.org) [modules](https://nodejs.org/docs/latest-v6.x/api/modules.html).
